@@ -7,7 +7,15 @@ const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', '
 export class InvestmentChart extends Component {
 
   getClosingPrice(investmentData) {
-    const closing_price = investmentData.close;
+    if (this.props.investment === 'bitcoin') {
+
+      var bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
+      console.log(bitcoins);
+      var closing_price = bitcoins * investmentData.close;
+    } else if (this.props.investment === 'tesouro') {
+
+      var closing_price = investmentData.close * this.props.amount;
+    }
     return closing_price;
   }
 
@@ -25,17 +33,17 @@ export class InvestmentChart extends Component {
 
 
   render() {
-    const ChartActive = this.props.investment;
-    if (ChartActive.data ) {
-      return <Chart data={this.props.investment.map(this.getClosingPrice)} labels={this.props.investment.map(this.getTime)} />
+    const ChartActive = this.props.history;
+    if (ChartActive.length > 0 ) {
+      return <Chart data={this.props.history.map(this.getClosingPrice, this)} labels={this.props.history.map(this.getTime)} type={this.props.investment} />
     } else {
       return null;
     }
   }
 }
 
-function mapStateToProps({ investment }) {
-  return { investment };
+function mapStateToProps({ amount, history, investment, period}) {
+  return { amount, history, investment, period};
 }
 
 export default connect(mapStateToProps)(InvestmentChart);

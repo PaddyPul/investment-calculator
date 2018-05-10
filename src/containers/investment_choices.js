@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchBitcoin, calculateTreasure } from '../actions/index';
+import { fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest } from '../actions/index';
 
 export class InvestmentChoices extends Component {
   constructor(props) {
@@ -29,10 +29,13 @@ export class InvestmentChoices extends Component {
   onInvestSubmit(event) {
     event.preventDefault();
     if (this.state.investmentType === 'bitcoin') {
-      this.props.fetchBitcoin(this.state.investmentDate, this.state.investmentAmount, this.state.investmentType);
+      this.props.fetchBitcoin(this.state.investmentDate);
     } else {
-      this.props.calculateTreasure(this.state.investmentDate, this.state.investmentAmount, this.state.investmentType);
+      this.props.calculateTreasure(this.state.investmentDate);
     }
+    this.props.getAmount(this.state.investmentAmount);
+    this.props.getPeriod(this.state.investmentDate);
+    this.props.getInvest(this.state.investmentType);
 
   }
 
@@ -66,7 +69,7 @@ export class InvestmentChoices extends Component {
 }
 
 function  mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchBitcoin, calculateTreasure }, dispatch);
+  return bindActionCreators({ fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(InvestmentChoices);
