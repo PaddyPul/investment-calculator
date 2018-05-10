@@ -14,10 +14,10 @@ export class InvestmentChart extends Component {
 
   getClosingPrice(investmentData) {
     var closing_price;
-    if (this.props.investment === 'bitcoin') {
+    if (this.props.investment === 'Bitcoin') {
       var bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
       closing_price = bitcoins * investmentData.close;
-    } else if (this.props.investment === 'tesouro') {
+    } else if (this.props.investment === 'Tesouro Direto pré-fixado 10%') {
       closing_price = investmentData.close * this.props.amount;
     }
     return closing_price;
@@ -44,11 +44,11 @@ export class InvestmentChart extends Component {
     var historylength = this.props.history.length;
     var bitcoins;
     var final_amount;
-      if (this.props.investment === 'bitcoin') {
+      if (this.props.investment === 'Bitcoin') {
       bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
       final_amount = bitcoins * this.props.history[historylength - 1].close;
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
-    } else if (this.props.investment === 'tesouro') {
+    } else if (this.props.investment === 'Tesouro Direto pré-fixado 10%') {
       final_amount = this.props.amount * this.props.history[historylength -1].close}
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
     return final_amount
@@ -57,6 +57,7 @@ export class InvestmentChart extends Component {
   render() {
     const ChartActive = this.props.history; // check if props.history is functioning, if it is a list
     if (ChartActive.length > 0 ) {
+
       return (
         <div>
           <Chart

@@ -11,7 +11,7 @@ export class Submit extends Component {
 
   onInvestSubmit(event) {
     event.preventDefault();
-    if (this.props.type === 'bitcoin') {
+    if (this.props.type === 'Bitcoin') {
       this.props.fetchBitcoin(this.props.date);
     } else {
       this.props.calculateTreasure(this.props.date);

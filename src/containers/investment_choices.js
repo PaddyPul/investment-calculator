@@ -5,7 +5,7 @@ import Submit from './submit';
 export default class InvestmentChoices extends Component {
   constructor(props) {
     super(props);
-    this.state = { investmentDate: '1', investmentType: 'tesouro', investmentAmount: '2000' };
+    this.state = { investmentDate: '1', investmentType: 'Tesouro Direto pré-fixado 10%', investmentAmount: '2000' };
     this.onTypeChange = this.onTypeChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
@@ -30,8 +30,8 @@ export default class InvestmentChoices extends Component {
         <h1>Há quanto tempo realizou o investimento?</h1>
           <select
             onChange={this.onTypeChange}>
-            <option value='tesouro'>Tesouro Direto pré-fixado 10%</option>
-            <option value='bitcoin'>Bitcoin</option>
+            <option value='Tesouro Direto pré-fixado 10%'>Tesouro Direto pré-fixado 10%</option>
+            <option value='Bitcoin'>Bitcoin</option>
           </select>
           <select
             onChange={this.onDateChange}>

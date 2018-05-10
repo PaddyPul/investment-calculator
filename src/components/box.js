@@ -3,10 +3,10 @@ import Submit from '../containers/submit';
 
 export default class Box extends Component {
   getOtherInvestment(type) {
-    if (type === 'bitcoin') {
-      return 'tesouro';
+    if (type === 'Bitcoin') {
+      return 'Tesouro Direto pré-fixado 10%';
     } else {
-      return 'bitcoin';
+      return 'Bitcoin';
     }
   }
   getFinalReturn(initial, final) {

@@ -7,7 +7,7 @@ export default class Chart extends Component {
 
   returnData(data, labels, type) {
     var plotData;
-    if (type === 'tesouro') {
+    if (type === 'Tesouro Direto pré-fixado 10%') {
       plotData = {
         labels: labels,
         datasets: [
@@ -33,7 +33,7 @@ export default class Chart extends Component {
           }
         ]
       }
-    } else if (type === 'bitcoin') {
+    } else if (type === 'Bitcoin') {
       plotData = {
         labels: labels,
         datasets: [
@@ -59,7 +59,7 @@ export default class Chart extends Component {
           }
         ]
       }
-    } 
+    }
     return plotData;
 
   }
