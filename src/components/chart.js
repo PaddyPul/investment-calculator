@@ -6,8 +6,9 @@ import {Line} from 'react-chartjs-2';
 export default class Chart extends Component {
 
   returnData(data, labels, type) {
+    var plotData;
     if (type === 'tesouro') {
-      var plotData = {
+      plotData = {
         labels: labels,
         datasets: [
           {
@@ -33,7 +34,7 @@ export default class Chart extends Component {
         ]
       }
     } else if (type === 'bitcoin') {
-      var plotData = {
+      plotData = {
         labels: labels,
         datasets: [
           {
@@ -58,9 +59,7 @@ export default class Chart extends Component {
           }
         ]
       }
-    } else {
-      var plotData = '';
-    }
+    } 
     return plotData;
 
   }

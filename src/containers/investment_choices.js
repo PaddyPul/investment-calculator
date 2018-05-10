@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Submit } from './submit';
+import Submit from './submit';
 
 export default class InvestmentChoices extends Component {
   constructor(props) {

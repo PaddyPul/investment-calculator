@@ -13,12 +13,12 @@ export class InvestmentChart extends Component {
   }
 
   getClosingPrice(investmentData) {
+    var closing_price;
     if (this.props.investment === 'bitcoin') {
       var bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
-      console.log(bitcoins);
-      var closing_price = bitcoins * investmentData.close;
+      closing_price = bitcoins * investmentData.close;
     } else if (this.props.investment === 'tesouro') {
-      var closing_price = investmentData.close * this.props.amount;
+      closing_price = investmentData.close * this.props.amount;
     }
     return closing_price;
   }
@@ -42,13 +42,14 @@ export class InvestmentChart extends Component {
 
   getFinalAmount() {
     var historylength = this.props.history.length;
-
-    if (this.props.investment === 'bitcoin') {
-      var bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
-      var final_amount = bitcoins * this.props.history[historylength - 1].close;
+    var bitcoins;
+    var final_amount;
+      if (this.props.investment === 'bitcoin') {
+      bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
+      final_amount = bitcoins * this.props.history[historylength - 1].close;
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
     } else if (this.props.investment === 'tesouro') {
-      var final_amount = this.props.amount * this.props.history[historylength -1].close}
+      final_amount = this.props.amount * this.props.history[historylength -1].close}
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
     return final_amount
   }
@@ -68,6 +69,8 @@ export class InvestmentChart extends Component {
           <div className={this.state.display}>
             <Box
               amount={this.props.amount}
+              investment={this.props.investment}
+              period={this.props.period}
               finalamount={this.getFinalAmount()}/>
           </div>
         </div>

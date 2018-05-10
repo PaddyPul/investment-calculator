@@ -5,9 +5,7 @@ import { fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest } from
 
 export class Submit extends Component {
   constructor(props) {
-
     super(props);
-    console.log(this);
     this.onInvestSubmit = this.onInvestSubmit.bind(this);
   }
 
@@ -20,7 +18,7 @@ export class Submit extends Component {
     }
     this.props.getAmount(this.props.amount);
     this.props.getPeriod(this.props.date);
-    this.props.getInvest(this.props.invest);
+    this.props.getInvest(this.props.type);
   }
 
   render() {
@@ -31,7 +29,7 @@ export class Submit extends Component {
       </form>
     );
   }
-};
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest }, dispatch);
