@@ -9,7 +9,6 @@ export const GETINVEST = 'GETINVEST';
 const ROOT_URL = `https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=BRL`;
 
 
-
 export function fetchBitcoin(period) {
   const days = period * 365
   const URL = `${ROOT_URL}&limit=${days}`
@@ -40,6 +39,7 @@ export function calculateTreasure(period) {
   }
 }
 
+
 export function getAmount(amount) {
   return {
     type: GETAMOUNT,
@@ -47,12 +47,14 @@ export function getAmount(amount) {
   }
 }
 
+
 export function getPeriod(period) {
   return {
     type: GETPERIOD,
     period
   }
 }
+
 
 export function getInvest(investment) {
   return {

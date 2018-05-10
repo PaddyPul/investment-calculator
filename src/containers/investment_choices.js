@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest } from '../actions/index';
 
-export class InvestmentChoices extends Component {
+import { Submit } from './submit';
+
+export default class InvestmentChoices extends Component {
   constructor(props) {
     super(props);
     this.state = { investmentDate: '1', investmentType: 'tesouro', investmentAmount: '2000' };
     this.onTypeChange = this.onTypeChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
-    this.onInvestSubmit = this.onInvestSubmit.bind(this);
-
   }
 
   onTypeChange(event) {
@@ -26,26 +23,11 @@ export class InvestmentChoices extends Component {
     this.setState({investmentAmount: event.target.value});
   }
 
-  onInvestSubmit(event) {
-    event.preventDefault();
-    if (this.state.investmentType === 'bitcoin') {
-      this.props.fetchBitcoin(this.state.investmentDate);
-    } else {
-      this.props.calculateTreasure(this.state.investmentDate);
-    }
-    this.props.getAmount(this.state.investmentAmount);
-    this.props.getPeriod(this.state.investmentDate);
-    this.props.getInvest(this.state.investmentType);
-
-  }
 
   render() {
     return (
       <div>
         <h1>Há quanto tempo realizou o investimento?</h1>
-        <form
-          onSubmit={this.onInvestSubmit}>
-
           <select
             onChange={this.onTypeChange}>
             <option value='tesouro'>Tesouro Direto pré-fixado 10%</option>
@@ -61,15 +43,12 @@ export class InvestmentChoices extends Component {
             <option value='2000'>RS$2 mil</option>
             <option value='10000'>R$10 mil</option>
           </select>
-          <button type='submit'>Rodar investimento</button>
-        </form>
+          <Submit
+            type={this.state.investmentType}
+            date={this.state.investmentDate}
+            amount={this.state.investmentAmount}
+            label='Simular Investimento'/>
       </div>
     );
   }
 }
-
-function  mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchBitcoin, calculateTreasure, getAmount, getPeriod, getInvest }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(InvestmentChoices);

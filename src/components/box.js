@@ -8,6 +8,7 @@ export default class Box extends Component {
         <h2>Seu investimento</h2>
         <p>Valor inicial: R${this.props.amount}</p>
         <p>Valor final: R${this.props.finalamount}</p>
+        <button></button>
       </div>
     );
   }
