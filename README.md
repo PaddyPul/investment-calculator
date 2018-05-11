@@ -17,6 +17,8 @@ npm start
 
 The calculator should be available accessing localhost:3000 in any browser.
 
+You can also access the application deployed at (https://investmentcalculator.herokuapp.com/).
+
 ## How does it work
 
 Imagine you made a investment in bitcoin a couple of years ago and you would like to know how would the returns differ from other types of investment, like stocks or treasury securities.
@@ -26,6 +28,7 @@ So far, this calculator can only compare between bitcoins and a 10% fixed intere
 
 The Trasury interest rates are calculated daily, as well as the closing price for each market day in bitcoins. This latter is fetched from (https://min-api.cryptocompare.com/), an API for getting
 live and historical pricing data on cryptocurrencies.
+
 
 ### React
 
@@ -45,15 +48,17 @@ This app also uses a chart.js wrapper for React, in order to display the investm
 
 The moment library helped to manipulate timestamp without common caveats related to this kind of data, like adding days to different duration months (30 or 31 days), et cetera.
 
-### Jest
+### Testing
 
-Some tests were produced using Jest library.
+Some tests were produced using Jest and react-test-renderer libraries.
+
 
 ## Final considerations
 
 Some things should be kept in mind for later development, like possibility to choose custom investment amounts or periods of time, other investment types and more functionalities to compare data.
 
 There is, though, a problem with currencies. As the cryptocompare API gives out the information in an asked currency (like, in this case, Brazilian Reais), the exchange rate used to compare a closing price from, say, a year ago is today's rate or that specific day's rate? This is something not mentioned in the API documentation and could lead to some discrepancies in the information displayed.
+
 
 ## The end
 
