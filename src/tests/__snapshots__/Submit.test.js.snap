@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Submit container rendering without issues 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <button
+    className="btn btn-primary submit__button"
+    type="submit"
+  >
+    Simular com o outro investimento
+  </button>
+</form>
+`;

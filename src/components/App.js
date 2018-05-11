@@ -20,8 +20,6 @@ class App extends Component {
           <Header />
           <InvestmentChart />
           <InvestmentChoices />
-
-
         </div>
       </Provider>
     );
