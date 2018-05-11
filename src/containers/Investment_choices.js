@@ -57,7 +57,7 @@ export default class InvestmentChoices extends Component {
           className='custom-select form__select col-8 col-sm-3'
           id='amount'
           onChange={this.onAmountChange}>
-          <option value='2000'>RS$2 mil</option>
+          <option value='2000'>R$2 mil</option>
           <option value='10000'>R$10 mil</option>
         </select><br />
         <Submit
