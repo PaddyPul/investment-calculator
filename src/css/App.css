@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffdd59+1,fefcea+99,fefcea+100,fefcea+101 */
+  background: #ffdd59; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffdd59 1%, #fefcea 99%, #fefcea 100%, #fefcea 101%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #ffdd59 1%,#fefcea 99%,#fefcea 100%,#fefcea 101%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #ffdd59 1%,#fefcea 99%,#fefcea 100%,#fefcea 101%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdd59', endColorstr='#fefcea',GradientType=0 ); /* IE6-9 */
+  height: 100%;
+}

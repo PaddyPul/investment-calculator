@@ -1,4 +1,5 @@
-import { GETAMOUNT } from '../actions/index.js';
+import { GETAMOUNT } from '../actions/Types.js';
+
 
 export default function(state = '', action) {
   switch (action.type) {

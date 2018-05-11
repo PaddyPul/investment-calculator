@@ -1,4 +1,4 @@
-import { GETINVEST } from '../actions/index.js';
+import { GETINVEST } from '../actions/Types.js';
 
 
 export default function(state = '', action) {

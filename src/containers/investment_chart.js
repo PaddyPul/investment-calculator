@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Chart from '../components/chart';
-import Box from '../components/box';
-
+import Chart from '../components/Chart';
+import Box from '../components/Box';
 const months = ['Jan', 'Fev', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dec'];
 
 export class InvestmentChart extends Component {
+
+
   constructor(props) {
     super(props);
-    this.state = { display:'hide' };
+    this.state = { boxDisplay: false };
     this.onChartClick = this.onChartClick.bind(this);
   }
+
 
   getClosingPrice(investmentData) {
     var closing_price;
@@ -20,8 +22,10 @@ export class InvestmentChart extends Component {
     } else if (this.props.investment === 'Tesouro Direto pré-fixado 10%') {
       closing_price = investmentData.close * this.props.amount;
     }
-    return closing_price;
+    var pretty_price = Math.round(closing_price * Math.pow(10, 2)) / Math.pow(10, 2);
+    return pretty_price;
   }
+
 
   getTime(investmentData) {
     const time = new Date(investmentData.time*1000); //argument must be in milliseconds, not seconds
@@ -32,34 +36,47 @@ export class InvestmentChart extends Component {
     return date;
   }
 
+
   onChartClick() {
-    if (this.state.display === 'hide') {
-      this.setState({display: 'show'});
+    if (this.state.boxDisplay === false) {
+      this.setState({boxDisplay: true});
     } else {
-      this.setState({display: 'hide'});
+      this.setState({boxDisplay: false});
     }
+  }
+
+  shouldDisplay() {
+    return this.state.boxDisplay;
   }
 
   getFinalAmount() {
     var historylength = this.props.history.length;
     var bitcoins;
     var final_amount;
+
       if (this.props.investment === 'Bitcoin') {
+
       bitcoins = this.props.amount/this.props.history[0].close; //quantity of bitcoins user could purchase at the beginning of period
       final_amount = bitcoins * this.props.history[historylength - 1].close;
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
+
     } else if (this.props.investment === 'Tesouro Direto pré-fixado 10%') {
+
       final_amount = this.props.amount * this.props.history[historylength -1].close}
       final_amount = Math.round(final_amount * Math.pow(10, 2)) / Math.pow(10, 2);
+
     return final_amount
   }
 
+
   render() {
     const ChartActive = this.props.history; // check if props.history is functioning, if it is a list
-    if (ChartActive.length > 0 ) {
-
+    if (ChartActive.error) {
+      alert('Houve um problema ao captar os dados de cotação de BitCoin. Cheque sua conexão ou tente mais tarde.');
+      return null;
+    } else if (ChartActive.length > 0 ) {
       return (
-        <div>
+        <div className='flex-container'>
           <Chart
             data={this.props.history.map(this.getClosingPrice, this)}
             labels={this.props.history.map(this.getTime)}
@@ -67,13 +84,15 @@ export class InvestmentChart extends Component {
             amount={this.props.amount}
             period={this.props.period}
             onChartClick={this.onChartClick}/>
-          <div className={this.state.display}>
+          {this.shouldDisplay() ?
             <Box
               amount={this.props.amount}
               investment={this.props.investment}
               period={this.props.period}
-              finalamount={this.getFinalAmount()}/>
-          </div>
+              finalamount={this.getFinalAmount()}/> :
+            null
+          }
+
         </div>
       )
     } else {
@@ -82,8 +101,10 @@ export class InvestmentChart extends Component {
   }
 }
 
+
 function mapStateToProps({ amount, history, investment, period}) {
   return { amount, history, investment, period};
 }
+
 
 export default connect(mapStateToProps)(InvestmentChart);

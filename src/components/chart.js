@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
+import '../css/Chart.css';
 
 
 
 export default class Chart extends Component {
+
 
   returnData(data, labels, type) {
     var plotData;
@@ -61,17 +63,20 @@ export default class Chart extends Component {
       }
     }
     return plotData;
-
   }
 
 
   render() {
-
-
     return (
-      <div onClick={this.props.onChartClick}>
+      <div onClick={this.props.onChartClick} className='chart'>
+        <div className="alert alert-info">
+          <strong>Clique no gráfico para obter mais informações.</strong>
+        </div>
+
         <h2>{this.props.type}</h2>
-        <Line data={this.returnData(this.props.data, this.props.labels, this.props.type)}/>
+        <Line
+          data={this.returnData(this.props.data, this.props.labels, this.props.type)}
+          />
       </div>
     );
   }
