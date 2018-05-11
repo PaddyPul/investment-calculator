@@ -17,7 +17,7 @@ npm start
 
 The calculator should be available accessing localhost:3000 in any browser.
 
-You can also access the application deployed at (https://investmentcalculator.herokuapp.com/).
+You can also access the application deployed at https://investmentcalculator.herokuapp.com/.
 
 ## How does it work
 
@@ -26,7 +26,7 @@ This calculator helps you compare between them, giving you the total return of e
 
 So far, this calculator can only compare between bitcoins and a 10% fixed interest rate in treasury bills, and the value inputs and outputs is in Brazilian Reais (BRL).
 
-The Trasury interest rates are calculated daily, as well as the closing price for each market day in bitcoins. This latter is fetched from (https://min-api.cryptocompare.com/), an API for getting
+The Trasury interest rates are calculated daily, as well as the closing price for each market day in bitcoins. This latter is fetched from https://min-api.cryptocompare.com/, an API for getting
 live and historical pricing data on cryptocurrencies.
 
 
