@@ -11,6 +11,7 @@ You can get it [here](https://www.npmjs.com/get-npm).
 The app is really easy to set up. After installing NPM (above mentioned), just clone the repo into a folder, and type into a prompt:
 
 ```
+npm install
 npm start
 ```
 
